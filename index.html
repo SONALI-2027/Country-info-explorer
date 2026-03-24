@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="output.css" rel="stylesheet">
+<title>Country Info Explorer</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gradient-to-r from-yellow-400 to-purple-500 min-h-screen">
+
+<div class="max-w-4xl mx-auto p-4">
+
+
+<h1 class="text-3xl md:text-4xl font-bold text-center mb-6 text-indigo-700">
+Country Info Explorer
+</h1>
+
+
+<div class="flex flex-col md:flex-row gap-3 mb-6">
+<input 
+id="searchInput"
+type="text" 
+placeholder="enter country's name"
+class="flex-1 p-3 rounded-xl border "
+/>
+
+<button 
+id="searchBtn"
+class="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-yellow-700 transition">
+GO!!
+</button>
+</div>
+
+<div id="loading" class="hidden text-center text-lg font-semibold text-indigo-600">
+Loading...
+</div>
+
+
+<div id="error" class="hidden text-center text-red-500 font-semibold"></div>
+
+
+<div id="result" class="hidden bg-blue-50 shadow-xl rounded-2xl p-6">
+
+
+<div class="flex flex-col md:flex-row gap-6 items-center">
+
+<img id="flag" class="w-40 rounded-lg shadow-md"/>
+
+<div>
+<h2 id="countryName" class="text-2xl font-bold text-gray-800"></h2>
+<p id="region" class="text-gray-600"></p>
+</div>
+
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+
+<div class="bg-gray-50 p-4 rounded-xl">
+<p class="font-semibold">Capital</p>
+<p id="capital"></p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-xl">
+<p class="font-semibold">Population</p>
+<p id="population"></p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-xl">
+<p class="font-semibold">Languages</p>
+<p id="languages"></p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-xl">
+<p class="font-semibold">Time Zone</p>
+<p id="timezone"></p>
+</div>
+
+</div>
+
+<div class="mt-6">
+<h3 class="text-xl font-bold mb-3 text-indigo-700">
+Cultural Information
+</h3>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<div class="bg-indigo-50 p-4 rounded-xl">
+<p class="font-semibold">Popular Food</p>
+<p id="food"></p>
+</div>
+
+<div class="bg-indigo-50 p-4 rounded-xl">
+<p class="font-semibold">Traditional Clothing</p>
+<p id="clothing"></p>
+</div>
+
+</div>
+</div>
+
+<!-- Weather -->
+<div class="mt-6">
+<h3 class="text-xl font-bold mb-3 text-indigo-700">
+Weather
+</h3>
+
+<div class="bg-blue-50 p-4 rounded-xl">
+<p id="weather"></p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
