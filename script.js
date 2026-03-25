@@ -51,7 +51,7 @@ document.getElementById("languages").innerText =
 Object.values(c.languages).join(", ")
 
 document.getElementById("timezone").innerText =
-c.timezones[0].toLocaleTimeString()
+c.timezones[0]
 
 
 
