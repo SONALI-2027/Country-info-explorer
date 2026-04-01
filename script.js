@@ -4,6 +4,9 @@ const searchInput = document.getElementById("searchInput")
 const result = document.getElementById("result")
 const loading = document.getElementById("loading")
 const error = document.getElementById("error")
+const suggestions = document.getElementById("suggestions")
+
+searchInput.addEventListener("input", showSuggestions)
 
 searchBtn.addEventListener("click", searchCountry)
 
@@ -70,7 +73,57 @@ showError("Country not found")
 
 }
 
+async function showSuggestions(){
 
+const query = searchInput.value.trim().toLowerCase()
+
+if(query.length === 0){
+suggestions.classList.add("hidden")
+return
+}
+
+try{
+
+
+const res = await fetch(
+"https://restcountries.com/v3.1/all?fields=name"
+)
+
+const data = await res.json()
+
+
+const filtered = data.filter(country =>
+country.name.common.toLowerCase().startsWith(query)
+)
+
+suggestions.innerHTML = ""
+
+filtered.slice(0,8).forEach(country => {
+
+const div = document.createElement("div")
+
+div.className =
+"p-3 hover:bg-purple-100 cursor-pointer border-b"
+
+div.innerText = country.name.common
+
+div.addEventListener("click", ()=>{
+searchInput.value = country.name.common
+suggestions.classList.add("hidden")
+searchCountry()
+})
+
+suggestions.appendChild(div)
+
+})
+
+suggestions.classList.remove("hidden")
+
+}catch{
+suggestions.classList.add("hidden")
+}
+
+}
 
 function showError(msg){
 loading.classList.add("hidden")
